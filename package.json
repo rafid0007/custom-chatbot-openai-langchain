@@ -1,16 +1,16 @@
 {
-  "name": "node_demo",
+  "name": "chatbot_server",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "type": "module",
   "scripts": {
+    "ingest": "node utils/chat/ingest-data.js",
     "dev": "NODE_ENV=development nodemon server.js",
     "start": "NODE_ENV=production node server.js",
     "start:pm2": "NODE_ENV=production pm2 start server.js --name chatbot_server -i -1",
     "stop:pm2": "pm2 stop chatbot_server",
     "restart:pm2": "pm2 restart chatbot_server",
-    "ingest": "node utils/chat/ingest-data.js",
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
     "lint:check": "eslint .",
@@ -37,6 +37,6 @@
     "nodemon": "^2.0.20"
   },
   "keywords": [],
-  "author": "",
+  "author": "Mostafa Rafid",
   "license": "ISC"
 }
