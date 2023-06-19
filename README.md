@@ -12,7 +12,7 @@ To install the dependencies, run the following command:
 
 ### `npm install`
 
-Now change the name of .env.sample to .evn and add OPENAI_API_KEY
+Now change the name of .env.sample to .env and add OPENAI_API_KEY
 
 Now run below command to ingest data from demo-data.txt file and save it into a vector store as embeddings.
 
