@@ -1,6 +1,5 @@
 import app from './app.js';
 import connectDatabase from './config/database.config.js';
-import os from 'os';
 import dotenv from 'dotenv';
 
 // Handling Uncaught Exception

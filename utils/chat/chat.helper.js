@@ -16,7 +16,7 @@ export const createConversationSummary = async (summary, user_input, bot_respons
 
 export const refineQuestionUsingPreviousSummary = async (summary, query) => {
     try {
-        const human_text = `Given the user query and context, if the query lacks context, provide a relevant short question for answering from a smart home assistant manual.\n\nCONTEXT: \n${summary}\n\nQuery: ${query}\n\nRefined Query:`;
+        const human_text = `Given the user query and context, if the query lacks context, provide a relevant short question for answering from a smart home assistant manual otherwise respond with the same question.\n\nCONTEXT: \n${summary}\n\nQuery: ${query}\n\nRefined Query:`;
 
         const response = await model.call(human_text);
         return response;
