@@ -4,11 +4,6 @@ import errorMiddleware from './middlewares/error.middleware.js';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 // Route Imports
 import { notFoundHandler } from './middlewares/customErrorHandler.middleware.js';
@@ -44,9 +39,6 @@ app.use(cookieParser());
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
 }
-
-// Serving static files
-app.use(express.static(join(__dirname, 'client')));
 
 // Routes
 app.use('/', RootRoute);
