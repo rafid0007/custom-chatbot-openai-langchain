@@ -3,20 +3,21 @@ import {VectorDBQAChain} from "langchain/chains";
 import vectorStore from "../../config/vector-store.config.js";
 
 export const createConversationSummary = async (summary, user_input, bot_response) => {
-    try {
-        const human_text = ` \`You're an AI language model. Generate a concise summary by considering the previous summary, user input, and AI responses in the conversation. Your goal is to capture the key information and maintain coherence..\n\nprevious summary: ${
-            summary || ""}, \nuser: ${user_input}, \nbot: ${bot_response}\ncombined summary:`;
-
-        const response = await model.call(human_text);
-        return response;
-    } catch (error) {
-        throw new Error("Problem creating conversation summary");
-    }
+    return `${summary?? ""} \nuser: ${user_input}, \nbot: ${bot_response}`;
+    // try {
+    //     const human_text = ` \`You're an AI language model. Generate a concise summary by considering the previous summary, user input, and AI responses in the conversation. Your goal is to capture the key information and maintain coherence..\n\nprevious summary: ${
+    //         summary || ""}, \nuser: ${user_input}, \nbot: ${bot_response}\ncombined summary:`;
+    //
+    //     const response = await model.call(human_text);
+    //     return response;
+    // } catch (error) {
+    //     throw new Error("Problem creating conversation summary");
+    // }
 };
 
 export const refineQuestionUsingPreviousSummary = async (summary, query) => {
     try {
-        const human_text = `Given the user query and context, if the query lacks context, provide a relevant short question for answering from a smart home assistant manual otherwise respond with the same question.\n\nCONTEXT: \n${summary}\n\nQuery: ${query}\n\nRefined Query:`;
+        const human_text = `Given the current user chat and previous conversations, provide a relevant short question to easily fetch answers from a knowledge base.\n\nPREVIOUS_CONVERSATIONS: \n${summary}\n\nCURRENT_CHAT: ${query}\n\nRefined Chat:`;
 
         const response = await model.call(human_text);
         return response;
